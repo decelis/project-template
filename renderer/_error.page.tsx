@@ -1,10 +1,8 @@
 import React from "react";
-import { PageShell } from "../components/core/PageShell";
+import { type PageContext } from "./usePageContext";
+
+function Page(pageContext: PageContext): React.ReactNode {
+  return <h1>ERROR</h1>;
+}
 
 export { Page };
-
-function Page(pageContext) {
-  <PageShell pageContext={pageContext}>
-    <h1>ERROR</h1>
-  </PageShell>;
-}

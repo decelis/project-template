@@ -5,17 +5,14 @@ import { type PageContext } from "./usePageContext";
 import { PageRenderer } from "./PageRenderer";
 
 import { sourceLocale, locales, initI18n } from "./i18n";
-
-export { render };
-export { passToClient };
-export { onBeforePrerender };
+import { type TemplateWrapped } from "vite-plugin-ssr/dist/types/node/runtime/html/renderHtml";
 
 const passToClient = ["pageProps", "locale"];
 
-async function render(pageContext) {
+async function render(pageContext: PageContext): Promise<TemplateWrapped> {
   const { Page, pageProps } = pageContext;
 
-  initI18n(pageContext);
+  await initI18n(pageContext);
 
   const pageHtml = ReactDOMServer.renderToString(
     <PageRenderer pageContext={pageContext}>
@@ -36,7 +33,11 @@ async function render(pageContext) {
 }
 
 // We only need this for pre-rendered apps https://vite-plugin-ssr.com/pre-rendering
-function onBeforePrerender(prerenderContext: { pageContexts: PageContext[] }) {
+function onBeforePrerender(prerenderContext: { pageContexts: PageContext[] }): {
+  prerenderContext: {
+    /* ... */
+  };
+} {
   const pageContexts: PageContext[] = [];
   prerenderContext.pageContexts.forEach((pageContext) => {
     // Duplicate pageContext for each locale
@@ -45,7 +46,7 @@ function onBeforePrerender(prerenderContext: { pageContexts: PageContext[] }) {
       let { urlOriginal } = pageContext;
 
       if (locale !== sourceLocale) {
-        urlOriginal = `/${locale}${pageContext.urlOriginal}`;
+        urlOriginal = `/${locale}${pageContext.urlOriginal ?? ""}`;
       }
 
       pageContexts.push({
@@ -62,3 +63,7 @@ function onBeforePrerender(prerenderContext: { pageContexts: PageContext[] }) {
     },
   };
 }
+
+export { render };
+export { passToClient };
+export { onBeforePrerender };

@@ -1,25 +1,58 @@
 import React, { useContext } from "react";
-import type { PageContextBuiltIn, PageContextBuiltInClientWithServerRouting } from "vite-plugin-ssr/types";
+import type { PageContextBuiltInClientWithServerRouting } from "vite-plugin-ssr/types";
 
-const Context = React.createContext<PageContext>({} as PageContext);
+const Context = React.createContext<PageContext>({
+  locale: "",
+  Page: null,
+  routeParams: {},
+  config: {},
+  configEntries: {},
+  exports: {},
+  exportsAll: {},
+  url: "",
+  urlOriginal: "",
+  isClientSideNavigation: false,
+  pageExports: {},
+  urlParsed: {
+    origin: null,
+    hash: "",
+    hashOriginal: null,
+    pathname: "",
+    pathnameOriginal: "",
+    search: {},
+    searchAll: {},
+    searchOriginal: "",
+    searchString: "",
+    hashString: "",
+  },
+  urlPathname: "",
+  isHydration: true,
+  isBackwardNavigation: null,
+  pageProps: {},
+});
 
-function PageContextProvider({ pageContext, children }) {
-  return <Context.Provider value={pageContext}>{children}</Context.Provider>;
+export interface PageContextProviderProps {
+  pageContext: PageContext;
+  children: React.ReactNode;
 }
 
-function usePageContext() {
+function PageContextProvider(props: PageContextProviderProps): React.ReactNode {
+  return (
+    <Context.Provider value={props.pageContext}>
+      {props.children}
+    </Context.Provider>
+  );
+}
+
+function usePageContext(): PageContext {
   const pageContext = useContext(Context);
   return pageContext;
 }
 
-export interface PageContext extends PageContextBuiltIn {
+export interface PageContext extends PageContextBuiltInClientWithServerRouting {
   locale: string;
+  pageProps: Record<string, unknown>;
 }
-
-export interface PageContextClient extends PageContextBuiltInClientWithServerRouting {
-  locale: string;
-}
-
 
 export { PageContextProvider };
 export { usePageContext };

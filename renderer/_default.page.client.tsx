@@ -4,12 +4,11 @@ import "../style/main.css";
 import { PageRenderer } from "./PageRenderer";
 
 import { initI18n } from "./i18n";
-import { type PageContextClient } from "./usePageContext";
-
+import { type PageContext } from "./usePageContext";
 
 let root: ReactDOM.Root;
 
-async function render(pageContext: PageContextClient): Promise<undefined> {
+async function render(pageContext: PageContext): Promise<undefined> {
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (
     localStorage.theme === "dark" ||
@@ -32,10 +31,10 @@ async function render(pageContext: PageContextClient): Promise<undefined> {
 
   await initI18n(pageContext);
 
-  const Page = pageContext;
+  const Page = pageContext.Page;
   const page = (
     <PageRenderer pageContext={pageContext}>
-      <Page />
+      <Page {...pageContext.pageProps} />
     </PageRenderer>
   );
   const container = document.getElementById("page-view") as HTMLElement;
