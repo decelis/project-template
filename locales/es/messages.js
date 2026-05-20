@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"Qoq-GP\":[\"Leer más\"],\"SC8lWa\":[\"Una plantilla de Vite lista para empezar a producir páginas profesionales y multidioma con dependencias mínimas, perfecto para crear páginas simples, o como punto de partida para desarrollos complejos.\"],\"i0qMbr\":[\"Inicio\"],\"uyJsf6\":[\"Información\"]}")};

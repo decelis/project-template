@@ -14,17 +14,17 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: pages/index.page.tsx:13
-msgid "A Vite template ready to start producing professional and multilingual pages with minimal dependencies, perfect for creating simple pages, or as a starting point for complex developments."
-msgstr "Un modèle Vite prêt à commencer à produire des pages professionnelles et multilingues avec des dépendances minimales, parfait pour créer des pages simples, ou comme point de départ pour des développements complexes."
+#~ msgid "A Vite template ready to start producing professional and multilingual pages with minimal dependencies, perfect for creating simple pages, or as a starting point for complex developments."
+#~ msgstr "Un modèle Vite prêt à commencer à produire des pages professionnelles et multilingues avec des dépendances minimales, parfait pour créer des pages simples, ou comme point de départ pour des développements complexes."
 
 #: components/core/PageShell.tsx:23
-msgid "About"
-msgstr "Information"
+#~ msgid "About"
+#~ msgstr "Information"
 
 #: components/core/PageShell.tsx:20
-msgid "Home"
-msgstr "Début"
+#~ msgid "Home"
+#~ msgstr "Début"
 
 #: pages/index.page.tsx:14
-msgid "Read more"
-msgstr "Lire plus"
+#~ msgid "Read more"
+#~ msgstr "Lire plus"

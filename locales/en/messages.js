@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"Qoq-GP\":[\"Read more\"],\"SC8lWa\":[\"A Vite template ready to start producing professional and multilingual pages with minimal dependencies, perfect for creating simple pages, or as a starting point for complex developments.\"],\"i0qMbr\":[\"Home\"],\"uyJsf6\":[\"About\"]}")};

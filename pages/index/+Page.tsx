@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "../components/navigation/Link";
-import { Trans } from "@lingui/macro";
+import { Link } from "../../components/navigation/Link";
+import { Trans } from "@lingui/react/macro";
 
 function Page(): React.ReactNode {
   return (

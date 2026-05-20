@@ -1,19 +1,20 @@
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import ssr from "vite-plugin-ssr/plugin";
-import { obfuscator } from "rollup-obfuscator";
-import { lingui } from "@lingui/vite-plugin";
-import eslint from "vite-plugin-eslint";
+import { lingui, linguiTransformerBabelPreset } from "@lingui/vite-plugin";
+import babel from "@rolldown/plugin-babel";
+/// <reference types="@batijs/core/types" />
 
-export default {
+import vike from "vike/plugin";
+import { defineConfig } from "vite";
+
+export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        plugins: ["macros"],
-      },
-    }),
-    ssr({ prerender: true }),
+    vike(),
+    tailwindcss(),
+    react(),
+    babel({
+        presets: [linguiTransformerBabelPreset()],
+      }),
     lingui(),
-    obfuscator(),
-    eslint(),
   ],
-};
+});

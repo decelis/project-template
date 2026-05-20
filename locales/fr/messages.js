@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"Qoq-GP\":[\"Lire plus\"],\"SC8lWa\":[\"Un modèle Vite prêt à commencer à produire des pages professionnelles et multilingues avec des dépendances minimales, parfait pour créer des pages simples, ou comme point de départ pour des développements complexes.\"],\"i0qMbr\":[\"Début\"],\"uyJsf6\":[\"Information\"]}")};

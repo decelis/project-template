@@ -1,6 +1,5 @@
 import React from "react";
-import { usePageContext } from "../../renderer/usePageContext";
-
+import { i18n } from "@lingui/core";
 import { sourceLocale } from "../../renderer/i18n";
 
 interface LinkProps {
@@ -8,21 +7,19 @@ interface LinkProps {
   locale?: string;
   className?: string;
   children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
 }
 
 function Link(props: LinkProps): React.ReactNode {
-  const pageContext = usePageContext();
-
-  const locale = props.locale ?? pageContext.locale;
+  const locale = props.locale ?? i18n.locale;
 
   let href = props.href;
-
   if (locale !== sourceLocale) {
     href = "/" + locale + props.href;
   }
 
   return (
-    <a href={href} className={props.className}>
+    <a onClick={props.onClick} href={href} className={props.className}>
       {props.children}
     </a>
   );
